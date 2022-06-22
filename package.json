@@ -1,0 +1,87 @@
+{
+  "name": "videojs-xr",
+  "version": "0.1.0",
+  "description": "Plugin for using WebXR with videojs, based on videojs-vr",
+  "main": "dist/videojs-xr.cjs.js",
+  "module": "dist/videojs-xr.es.js",
+  "repository": "https://github.com/thomasdeppisch/videojs-xr",
+  "generator-videojs-plugin": {
+    "version": "7.6.3"
+  },
+  "browserslist": [
+    "defaults",
+    "ie 11"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "npm-run-all -p build:*",
+    "build:css": "postcss -o dist/videojs-xr.css --config scripts/postcss.config.js src/plugin.css",
+    "build:js": "rollup -c scripts/rollup.config.js",
+    "clean": "shx rm -rf ./dist ./test/dist",
+    "postclean": "shx mkdir -p ./dist ./test/dist",
+    "lint": "vjsstandard",
+    "server": "karma start scripts/karma.conf.js --singleRun=false --auto-watch",
+    "start": "npm-run-all -p server watch",
+    "pretest": "npm-run-all lint build",
+    "test": "npm-run-all test:*",
+    "posttest": "shx cat test/dist/coverage/text.txt",
+    "test:unit": "karma start scripts/karma.conf.js",
+    "test:verify": "vjsverify --skip-es-check --verbose",
+    "update-changelog": "conventional-changelog -p videojs -i CHANGELOG.md -s",
+    "preversion": "npm test",
+    "version": "is-prerelease || npm run update-changelog && git add CHANGELOG.md",
+    "watch": "npm-run-all -p watch:*",
+    "watch:css": "npm run build:css -- -w",
+    "watch:js": "npm run build:js -- -w"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "keywords": [
+    "videojs",
+    "videojs-plugin"
+  ],
+  "author": "Thomas Deppisch",
+  "license": "MIT",
+  "vjsstandard": {
+    "ignore": [
+      "dist",
+      "docs",
+      "test/dist"
+    ]
+  },
+  "files": [
+    "CONTRIBUTING.md",
+    "dist/",
+    "docs/",
+    "index.html",
+    "scripts/",
+    "src/",
+    "test/"
+  ],
+  "husky": {
+    "hooks": {}
+  },
+  "dependencies": {
+    "global": "^4.4.0",
+    "shx": "^0.3.4",
+    "three": "^0.125.2",
+    "video.js": "^7.7.6",
+    "webxr-polyfill": "^2.0.2"
+  },
+  "devDependencies": {
+    "@videojs/generator-helpers": "~1.0.0",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^6.8.0",
+    "karma": "^4.4.1",
+    "postcss-cli": "^6.0.0",
+    "rollup": "^1.32.1",
+    "sinon": "^7.5.0",
+    "videojs-generate-karma-config": "^5.3.1",
+    "videojs-generate-postcss-config": "~2.1.0",
+    "videojs-generate-rollup-config": "^3.2.1",
+    "videojs-generator-verify": "~1.2.0",
+    "videojs-standard": "^8.0.4"
+  }
+}
