@@ -1,3 +1,5 @@
+# THIS REPOSITORY IS DEPRECATED AND WILL NOT BE UPDATED ANYMORE. DEVELOPEMENT OF VIDEOJS-XR WILL CONTINUE AT [https://git.nexlab.net/SexHackMe/videojs-xr](https://git.nexlab.net/SexHackMe/videojs-xr) 
+
 # videojs-xr
 
 This is a plugin for using WebXR with [videojs](https://github.com/videojs), based on [videojs-vr](https://github.com/videojs/videojs-vr) and forked from [videojs-xr](https://github.com/thomasdeppisch/videojs-xr). Videojs-xr supports the Oculus browser and Firefox Reality on Oculus Quest. For a jump start how to use it with videojs see the [index.html](https://github.com/thomasdeppisch/videojs-xr/blob/master/index.html).
